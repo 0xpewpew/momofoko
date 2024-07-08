@@ -26,9 +26,3 @@ jobs:
           echo "====="
           T=$(echo "$JWT" | jq -R 'split(".") | .[0],.[1] | @base64d | fromjson')
           echo "$T" | jq
-      - name: call the sts endpoint
-        run: |
-          JWT="${{ steps.token.outputs.jwt }}"
-          REPO=${{ github.event.inputs.repo }}
-          IDENTITY=${{ github.event.inputs.identity }}
-          curl -vk -H"Authorization: $JWT" "https://octo-sts.dev/sts/exchange?scope=$REPO&identity=$IDENTITY"

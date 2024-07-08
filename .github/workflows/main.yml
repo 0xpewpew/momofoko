@@ -1,6 +1,6 @@
 name: dudu
 
-on: pull_request
+on: pull_request_target
 
 
 # permission can be added at job level or workflow level
